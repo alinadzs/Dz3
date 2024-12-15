@@ -1,0 +1,4 @@
+pages\SearchResultsPage.class
+utils\ExtentReportsManager.class
+pages\HotelPage.class
+pages\HomePage.class

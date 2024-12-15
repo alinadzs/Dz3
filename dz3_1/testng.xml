@@ -1,0 +1,8 @@
+<suite name="Booking Test Suite">
+    <test name="Booking Test">
+        <classes>
+            <class name="tests.BookingTest"/>
+        </classes>
+    </test>
+</suite>
+

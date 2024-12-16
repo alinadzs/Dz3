@@ -2,7 +2,7 @@ package pages;
 
 import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.Condition.*;
-import static com.codeborne.selenide.CollectionCondition.*; // добавляем правильный импорт
+import static com.codeborne.selenide.CollectionCondition.*;
 
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
@@ -10,9 +10,9 @@ import com.codeborne.selenide.SelenideElement;
 public class BookingPage {
     private SelenideElement searchInput = $("input[name='ss']");
     private SelenideElement searchButton = $("button[type='submit']");
-    private SelenideElement filter5Stars = $x("//div[@data-filters-group='class']//label[contains(., '5 звезд')]");
-    private SelenideElement destinationHeader = $x("//h1[contains(text(),'Анталья')]");
-    private ElementsCollection hotelStars = $$x("//span[contains(@aria-label, '5 звезд')]");
+    private SelenideElement filter5Stars = $x("//div[@data-filters-group='class']//label[data-filters-item='class:class=5']");
+    private SelenideElement destinationHeader = $x("//h1[attribute(text(), 'Анталья')]");
+    private ElementsCollection hotelStars = $$x("//div[contains(@aria-label, '5 из 5')]");
 
     public BookingPage openPage() {
         open("https://booking.com/");
@@ -36,9 +36,16 @@ public class BookingPage {
     }
 
     public BookingPage verifyAllHotelsAre5Stars() {
-        // исправленный код
-        hotelStars.shouldHave(sizeGreaterThan(0)); // проверяем, что коллекция отелей не пустая
-        hotelStars.forEach(star -> star.shouldBe(visible)); // проверяем, что каждый отель имеет 5 звезд
+        // Получаем коллекцию всех карточек отелей на странице
+        ElementsCollection hotelCards = $$x("//div[@data-testid='property-card']");
+
+        // Проверяем, что есть хотя бы одна карточка отеля
+        hotelCards.shouldHave(sizeGreaterThan(0));
+
+        // Проверяем, что у всех карточек есть элемент "5 из 5 звезд"
+        hotelStars.shouldHave(size(hotelCards.size()));
+
         return this;
     }
 }
+

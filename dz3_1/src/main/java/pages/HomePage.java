@@ -1,17 +1,21 @@
 package pages;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.Random;
+
 import com.codeborne.selenide.SelenideElement;
-import static com.codeborne.selenide.Selenide.*;
+
+import static com.codeborne.selenide.Selenide.$;
+import static com.codeborne.selenide.Selenide.open;
 
 public class HomePage {
 
-    private final SelenideElement searchField = $("#ss");
-    private final SelenideElement checkInDate = $("[data-placeholder='Дата заезда']");
-    private final SelenideElement checkOutDate = $("[data-placeholder='Дата отъезда']");
-    private final SelenideElement searchButton = $(".sb-searchbox__button");
+    private final SelenideElement searchField = $("input[name='ss']");
+    private SelenideElement searchButton = $("button[type='submit']");
 
-    public HomePage openPage() { // Переименуйте метод, чтобы избежать конфликта
-        open("https://www.booking.com/");
+    public HomePage openPage() {
+        open("https://booking.com/");
         return this;
     }
 
@@ -21,14 +25,22 @@ public class HomePage {
     }
 
     public HomePage setRandomDates() {
-        checkInDate.click();
-        $("[data-date='2024-12-20']").click(); // Замените на генерацию случайных дат
-        $("[data-date='2024-12-25']").click();
+        LocalDate today = LocalDate.now();
+        Random random = new Random();
+
+        LocalDate checkIn = today.plusDays(random.nextInt(30) + 1); // Случайная дата в пределах месяца
+        LocalDate checkOut = checkIn.plusDays(random.nextInt(5) + 1); // От 1 до 5 ночей
+
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        searchButton.click();
+        $("[data-date='" + checkIn.format(formatter) + "']").click();
+        $("[data-date='" + checkOut.format(formatter) + "']").click();
+
         return this;
     }
 
-    public SearchResultsPage clickSearch() {
+    public HomePage clickSearch() {
         searchButton.click();
-        return new SearchResultsPage();
+        return this;
     }
 }

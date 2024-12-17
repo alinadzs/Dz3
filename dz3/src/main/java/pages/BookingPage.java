@@ -10,9 +10,10 @@ import com.codeborne.selenide.SelenideElement;
 public class BookingPage {
     private SelenideElement searchInput = $("input[name='ss']");
     private SelenideElement searchButton = $("button[type='submit']");
-    private SelenideElement filter5Stars = $x("//div[@data-filters-group='class']//label[data-filters-item='class:class=5']");
-    private SelenideElement destinationHeader = $x("//h1[attribute(text(), 'Анталья')]");
+    private SelenideElement filter5Stars = $x("//div[@data-filters-group='class']//div[data-filters-item='class:class=5']");
+    private SelenideElement destinationHeader = $x("////input[placeholder='Анталья']");
     private ElementsCollection hotelStars = $$x("//div[contains(@aria-label, '5 из 5')]");
+    private ElementsCollection hotelCards = $$x("//div[@data-testid='property-card']");
 
     public BookingPage openPage() {
         open("https://booking.com/");
@@ -37,7 +38,7 @@ public class BookingPage {
 
     public BookingPage verifyAllHotelsAre5Stars() {
         // Получаем коллекцию всех карточек отелей на странице
-        ElementsCollection hotelCards = $$x("//div[@data-testid='property-card']");
+        //ElementsCollection hotelCards = $$x("//div[@data-testid='property-card']");
 
         // Проверяем, что есть хотя бы одна карточка отеля
         hotelCards.shouldHave(sizeGreaterThan(0));

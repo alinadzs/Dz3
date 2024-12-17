@@ -1,14 +1,14 @@
 -------------------------------------------------------------------------------
 Test set: tests.BookingTest
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 16.69 s <<< FAILURE! -- in tests.BookingTest
-tests.BookingTest.bookingAutomationTest -- Time elapsed: 15.18 s <<< FAILURE!
-Element not found {By.xpath: //h1[contains(text(),'Анталья')]}
+Tests run: 1, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 15.38 s <<< FAILURE! -- in tests.BookingTest
+tests.BookingTest.bookingAutomationTest -- Time elapsed: 13.76 s <<< FAILURE!
+Element not found {By.xpath: //h1[contains(text(), 'Анталья')]}
 Expected: text "Анталья"
-Screenshot: file:/C:/Users/User/IdeaProjects/dz3/build/reports/tests/1734261380410.0.png
-Page source: file:/C:/Users/User/IdeaProjects/dz3/build/reports/tests/1734261380410.0.html
+Screenshot: file:/C:/Users/User/IdeaProjects/dz3/build/reports/tests/1734372697545.0.png
+Page source: file:/C:/Users/User/IdeaProjects/dz3/build/reports/tests/1734372697545.0.html
 Timeout: 6 s.
-Caused by: NoSuchElementException: no such element: Unable to locate element: {"method":"xpath","selector":"//h1[contains(text(),'Анталья')]"}
+Caused by: NoSuchElementException: no such element: Unable to locate element: {"method":"xpath","selector":"//h1[contains(text(), 'Анталья')]"}
 	at com.codeborne.selenide.impl.WebElementSource.createElementNotFoundError(WebElementSource.java:91)
 	at com.codeborne.selenide.impl.ElementFinder.createElementNotFoundError(ElementFinder.java:142)
 	at com.codeborne.selenide.impl.WebElementSource.handleError(WebElementSource.java:143)
@@ -25,15 +25,15 @@ Caused by: NoSuchElementException: no such element: Unable to locate element: {"
 	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
-Caused by: org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {"method":"xpath","selector":"//h1[contains(text(),'Анталья')]"}
+Caused by: org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {"method":"xpath","selector":"//h1[contains(text(), 'Анталья')]"}
   (Session info: chrome=131.0.6778.140)
 For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
 Build info: version: '4.10.0', revision: 'c14d967899'
 System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '17.0.13'
 Driver info: org.openqa.selenium.chrome.ChromeDriver
-Command: [d1b0d81f2958f9184ec49414ea92ecf0, findElement {using=xpath, value=//h1[contains(text(),'Анталья')]}]
-Capabilities {acceptInsecureCerts: true, browserName: chrome, browserVersion: 131.0.6778.140, chrome: {chromedriverVersion: 131.0.6778.108 (3b014839fbc..., userDataDir: C:\Users\User\AppData\Local...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:54324}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:54324/devtoo..., se:cdpVersion: 131.0.6778.140, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: accept, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
-Session ID: d1b0d81f2958f9184ec49414ea92ecf0
+Command: [6ac553f74c380b449c07e1377ee753c4, findElement {using=xpath, value=//h1[contains(text(), 'Анталья')]}]
+Capabilities {acceptInsecureCerts: true, browserName: chrome, browserVersion: 131.0.6778.140, chrome: {chromedriverVersion: 131.0.6778.108 (3b014839fbc..., userDataDir: C:\Users\User\AppData\Local...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:64363}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:64363/devtoo..., se:cdpVersion: 131.0.6778.140, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: accept, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 6ac553f74c380b449c07e1377ee753c4
 	at jdk.internal.reflect.GeneratedConstructorAccessor11.newInstance(Unknown Source)
 	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
 	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:500)

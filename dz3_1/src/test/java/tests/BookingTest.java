@@ -10,10 +10,9 @@ import pages.SearchResultsPage;
 import utils.ExtentReportsManager;
 import com.codeborne.selenide.Configuration;
 
-import java.util.Map; // Убедитесь, что импорт добавлен
+import java.util.Map;
 
 import static com.codeborne.selenide.Selenide.*;
-
 public class BookingTest {
 
     private ExtentTest test;
@@ -38,20 +37,21 @@ public class BookingTest {
                 .clickSearch();
         test.info("Searched for city and selected random dates");
 
-        // Step 3: Work with search results
+        // Step 3: Open the map and interact with the first hotel
         SearchResultsPage searchResultsPage = new SearchResultsPage();
+        searchResultsPage.clickShowOnMap();
+        test.info("Clicked on 'Show on map'");
 
-        // Hover over first hotel and retrieve its data
-        searchResultsPage.hoverOverFirstHotel();
-        Map<String, String> hotelData = searchResultsPage.getFirstHotelData(); // Исправлено
-        test.info("Hotel data collected: " + hotelData);
+        // Step 4: Hover over the first hotel on the map and retrieve its data
+        searchResultsPage.hoverOverFirstHotelOnMap();
+        Map<String, String> hotelDataFromMap = searchResultsPage.getHotelDataFromMap();
+        test.info("Hotel data collected from map: " + hotelDataFromMap);
 
-        // Step 4: Click on the corresponding map marker
-        HotelPage hotelPage = searchResultsPage.clickOnMapMarker();
-        test.info("Navigated to the hotel page via map marker");
+        // Step 5: Click on the first hotel on the map and verify its details on the hotel page
+        HotelPage hotelPage = searchResultsPage.clickFirstHotelCardOnMap();
+        test.info("Navigated to the hotel page");
 
-        // Step 5: Verify hotel details on the hotel page
-        hotelPage.verifyHotelData(hotelData);
+        hotelPage.verifyHotelData(hotelDataFromMap);
         test.pass("Verified hotel details on the hotel page");
     }
 

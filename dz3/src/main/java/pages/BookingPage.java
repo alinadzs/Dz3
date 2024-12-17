@@ -11,7 +11,7 @@ public class BookingPage {
     private SelenideElement searchInput = $("input[name='ss']");
     private SelenideElement searchButton = $("button[type='submit']");
     private SelenideElement filter5Stars = $x("//div[@data-filters-group='class']//div[@data-filters-item='class:class=5']");
-    private SelenideElement destinationHeader = $x("////input[placeholder='Анталья']");
+    private SelenideElement destinationHeader = $x("//div/input['value="Анталья"']");
     private ElementsCollection hotelStars = $$x("//div[contains(@aria-label, '5 из 5')]");
     private ElementsCollection hotelCards = $$x("//div[@data-testid='property-card']");
 
